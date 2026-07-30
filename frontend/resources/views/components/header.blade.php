@@ -1,4 +1,5 @@
-<header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-300">
+<header id="siteHeader"
+    class="fixed inset-x-0 top-0 z-50 bg-white/50 backdrop-blur-lg overflow-hidden transition-all duration-300">
 
     <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between h-18 px-5 lg:px-8">
@@ -70,7 +71,7 @@
 
             {{-- Mobile Menu Button --}}
             <button id="mobileMenuButton"
-                class="lg:hidden w-11 h-11 rounded-xl border border-gray-200 bg-white/70 backdrop-blur-lg flex items-center justify-center transition">
+                class="lg:hidden w-11 h-11 rounded-xl border border-gray-200 bg-white/50 backdrop-blur-lg flex items-center justify-center transition">
 
                 {{-- Hamburger --}}
                 <svg id="menuOpenIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none"
@@ -95,36 +96,36 @@
     </div>
 
     {{-- Mobile Menu --}}
-    <div id="mobileMenu" class="hidden lg:hidden bg-white/50 backdrop-blur-lg border-t border-gray-100 shadow-xl">
+<div id="mobileMenu" class="hidden lg:hidden border-t border-white/20">
 
-        <div class="px-5 py-6 space-y-5">
+    <div class="px-5 py-6 space-y-5">
 
-            <a href="#" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                Home
-            </a>
+        <a href="/" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            Home
+        </a>
 
-            <a href="#about" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                About
-            </a>
+        <a href="#about" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            About
+        </a>
 
-            <a href="#services" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                Services
-            </a>
+        <a href="#services" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            Services
+        </a>
 
-            <a href="#faq" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                FAQ
-            </a>
+        <a href="#faq" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            FAQ
+        </a>
 
-            <a href="#contact" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                Contact
-            </a>
+        <a href="#contact" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            Contact
+        </a>
 
-            <a href="#gallery" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
-                Gallery
-            </a>
-
-        </div>
+        <a href="#gallery" class="mobile-link block text-gray-700 hover:text-primary-600 transition">
+            Gallery
+        </a>
 
     </div>
+
+</div>
 
 </header>

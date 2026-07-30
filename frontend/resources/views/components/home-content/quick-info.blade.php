@@ -62,7 +62,7 @@
 
                 </p>
 
-                <a href="tel:+91{{ preg_replace('/\D+/', '', (string) ($data->phone ?? '')) }}"
+                <a href="tel:{{ $data->phone }}"
                     class="inline-block mt-4 text-sm sm:text-base text-primary-600 font-semibold hover:text-primary-700">
 
                     {{ $data->phone }}

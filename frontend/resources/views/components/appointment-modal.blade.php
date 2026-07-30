@@ -1,10 +1,7 @@
-<div
-    id="appointmentModal"
-    onclick="closeAppointmentModal()"
+<div id="appointmentModal" onclick="closeAppointmentModal()"
     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
 
-    <div
-        onclick="event.stopPropagation()"
+    <div onclick="event.stopPropagation()"
         class="flex max-h-[92vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
 
         <!-- Header -->
@@ -41,8 +38,7 @@
 
             </div>
 
-            <button
-                onclick="closeAppointmentModal()"
+            <button onclick="closeAppointmentModal()"
                 class="flex h-10 w-10 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-600">
 
                 ✕
@@ -52,7 +48,7 @@
         </div>
 
         <!-- Body -->
-        <div class="space-y-6 overflow-y-auto p-6">
+        <div class="space-y-6 overflow-y-auto px-6 py-4">
 
             <!-- Patient Information -->
 
@@ -64,9 +60,7 @@
                         Full Name
                     </label>
 
-                    <input
-                        type="text"
-                        placeholder="John Doe"
+                    <input type="text" placeholder="John Doe"
                         class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100">
 
                 </div>
@@ -77,9 +71,7 @@
                         Mobile Number
                     </label>
 
-                    <input
-                        type="text"
-                        placeholder="9876543210"
+                    <input type="text" placeholder="9876543210"
                         class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100">
 
                 </div>
@@ -147,32 +139,34 @@
                     </button>
 
                     <!-- Unavailable -->
-                    <button
-                        disabled
+                    <button disabled
                         class="cursor-not-allowed rounded-lg border border-gray-200 bg-gray-100 py-2.5 text-sm text-gray-400 line-through opacity-70">
                         10:00
                     </button>
 
                     <!-- Unavailable -->
-                    <button
-                        disabled
+                    <button disabled
                         class="cursor-not-allowed rounded-lg border border-gray-200 bg-gray-100 py-2.5 text-sm text-gray-400 line-through opacity-70">
                         10:30
                     </button>
 
-                    <button class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
+                    <button
+                        class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
                         11:00
                     </button>
 
-                    <button class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
+                    <button
+                        class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
                         11:30
                     </button>
 
-                    <button class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
+                    <button
+                        class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
                         02:00
                     </button>
 
-                    <button class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
+                    <button
+                        class="rounded-lg border border-gray-200 py-2.5 text-sm transition hover:border-primary-400 hover:bg-primary-50 cursor-pointer">
                         02:30
                     </button>
 
@@ -189,34 +183,47 @@
                     <span class="text-gray-400">(Optional)</span>
                 </label>
 
-                <textarea
-                    rows="3"
-                    placeholder="Describe your concern..."
+                <textarea rows="3" placeholder="Describe your concern..."
                     class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"></textarea>
 
+            </div>
+
+            <div class="rounded-lg bg-blue-50 border border-blue-200 p-2">
+                <p class="text-xs sm:text-sm text-blue-800 font-medium">
+                    <i class="mdi mdi-information-outline mr-2"></i>
+                    We will contact you shortly to confirm your appointment request.
+                </p>
             </div>
         </div>
 
 
         <!-- Footer -->
 
-        <div class="flex justify-end gap-3 border-t border-gray-100 bg-white px-6 py-4">
+        <div class="flex justify-between border-t border-gray-100 bg-white px-6 py-4">
 
-            <button
-                onclick="closeAppointmentModal()"
-                class="rounded-xl border border-gray-300 px-5 py-2.5 text-sm font-medium hover:bg-gray-50 cursor-pointer">
+            <a href="{{ $data->whatsapp ? 'https://wa.me/' . preg_replace('/\D+/', '', $data->whatsapp) : '#' }}"
+                target="_blank"
+                class="rounded-xl border border-green-500 bg-green-500 px-4 py-2 text-sm font-semibold text-white transition duration-200 hover:bg-green-600 hover:shadow-md">
+                <i class="mdi mdi-whatsapp"></i>
+                Chat Now
 
-                Cancel
+            </a>
+            <div class="flex gap-2">
 
-            </button>
+                <button onclick="closeAppointmentModal()"
+                    class="rounded-xl border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 cursor-pointer">
 
-            <button
-                onclick="closeAppointmentModal()"
-                class="rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-primary-700 cursor-pointer">
+                    Cancel
 
-                Submit Request
+                </button>
 
-            </button>
+                <button onclick="closeAppointmentModal()"
+                    class="rounded-xl bg-primary-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-700 cursor-pointer">
+
+                    Submit
+
+                </button>
+            </div>
 
         </div>
 

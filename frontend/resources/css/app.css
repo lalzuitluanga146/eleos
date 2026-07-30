@@ -1,17 +1,19 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "@mdi/font/css/materialdesignicons.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
 /* Blue */
 @theme {
-    --color-primary-50:  #f5faff;
+    --color-primary-50: #f5faff;
     --color-primary-100: #e9f3ff;
     --color-primary-200: #d3e7ff;
     --color-primary-300: #afd4ff;
@@ -21,4 +23,46 @@
     --color-primary-700: #2c60ad;
     --color-primary-800: #294f8b;
     --color-primary-900: #263f6d;
+}
+
+/* About Image - Easter Egg */
+
+.snowflake {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+
+    animation-name: snowfall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    25% {
+        transform: translateX(15px) translateY(25vh) rotate(90deg);
+    }
+
+    50% {
+        transform: translateX(-15px) translateY(50vh) rotate(180deg);
+    }
+
+    75% {
+        transform: translateX(20px) translateY(75vh) rotate(270deg);
+    }
+
+    100% {
+        transform: translateX(-10px) translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
 }

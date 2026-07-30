@@ -100,7 +100,7 @@
                                 </h4>
 
                                 <a
-                                    href="tel:+91{{ preg_replace('/\D+/', '', (string) ($data->phone ?? '')) }}"
+                                    href="tel:{{ $data->phone }}"
                                     class="mt-2 block text-sm sm:text-base text-primary-600 hover:text-primary-700">
 
                                     {{ $data->phone ?? 'Phone number unavailable' }}

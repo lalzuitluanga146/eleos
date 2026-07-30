@@ -59,7 +59,7 @@
 
                 </p>
 
-                <div class="mt-6 sm:mt-8 space-y-3">
+                {{-- <div class="mt-6 sm:mt-8 space-y-3">
 
                     <div class="flex items-start gap-3">
 
@@ -85,7 +85,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
             </div>
 

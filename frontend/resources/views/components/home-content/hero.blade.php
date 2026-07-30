@@ -76,7 +76,7 @@
                     </button>
 
                     <a
-                        href="tel:+91{{ preg_replace('/\D+/', '', $data->phone) }}"
+                        href="tel:{{ $data->phone }}"
                         class="border border-primary-200 hover:bg-primary-50 text-primary-700 px-6 py-3.5 rounded-xl font-semibold text-center transition">
 
                         Call Now

@@ -172,7 +172,7 @@
 
                         <i class="mdi mdi-phone text-primary-400 text-xl"></i>
 
-                        <a href="tel:+91{{ preg_replace('/\D+/', '', (string) ($data->phone ?? '')) }}"
+                        <a href="tel:{{ $data->phone }}"
                             class="text-sm sm:text-base text-primary-200 hover:text-white">
 
                             {{ $data->phone ?? 'Phone number unavailable' }}

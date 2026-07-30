@@ -139,8 +139,8 @@ class DatabaseSeeder extends Seeder
             'linkedin_url' => 'https://linkedin.com/company/eleos',
 
             // SEO
-            'meta_title' => 'SmileCare Dental Clinic | Professional Dental Care',
-            'meta_description' => 'SmileCare Dental Clinic provides professional dental treatments including checkups, cleaning, fillings, root canal therapy, orthodontics, and cosmetic dentistry.',
+            'meta_title' => 'Eleos Dental Clinic',
+            'meta_description' => 'Eleos Dental Clinic provides professional dental treatments including checkups, cleaning, fillings, root canal therapy, orthodontics, and cosmetic dentistry.',
         ]);
     }
 }
