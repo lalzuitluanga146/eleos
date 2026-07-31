@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Galleries;
+namespace App\Filament\Resources\WhyChooseUs;
 
-use App\Filament\Resources\Galleries\Pages\ManageGalleries;
-use App\Models\Gallery;
+use App\Filament\Resources\WhyChooseUs\Pages\ManageWhyChooseUs;
+use App\Models\WhyChooseUs;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -17,22 +17,22 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
-class GalleryResource extends Resource
+
+class WhyChooseUsResource extends Resource
 {
-    protected static ?string $model = Gallery::class;
+    protected static ?string $model = WhyChooseUs::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
-
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShieldCheck;
+    
     protected static string|\UnitEnum|null $navigationGroup = 'Website Content';
 
-    protected static ?string $navigationLabel = 'Gallery';
+    protected static ?string $navigationLabel = 'Why Choose Us';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
     {
@@ -44,18 +44,17 @@ class GalleryResource extends Resource
                         Grid::make(2)
                             ->schema([
                                 TextInput::make('title')
+                                    ->required()
                                     ->maxLength(255),
-                                TextInput::make('alt_text')
-                                    ->label('Alt text')
-                                    ->helperText('Describe the image for accessibility.'),
+                                TextInput::make('icon')
+                                    ->label('Icon class')
+                                    ->placeholder('mdi-tooth-outline')
+                                    ->helperText('Use a Material Design Icons class, for example mdi-tooth-outline.'),
                             ]),
-                        FileUpload::make('image')
+                        Textarea::make('description')
                             ->required()
-                            ->image()
-                            ->disk('public')
-                            ->visibility('public')
-                            ->directory('gallery')
-                            ->imageEditor()
+                            ->rows(5)
+                            ->autosize()
                             ->columnSpanFull(),
                         Grid::make(2)
                             ->schema([
@@ -67,7 +66,7 @@ class GalleryResource extends Resource
                                     ->required(),
                                 Toggle::make('is_active')
                                     ->default(true)
-                                    ->helperText('Inactive images are hidden from the website.'),
+                                    ->helperText('Inactive services are hidden from the website.'),
                             ]),
                     ]),
             ]);
@@ -77,15 +76,9 @@ class GalleryResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
-                    ->disk('public')
-                    ->square(),
                 TextColumn::make('title')
                     ->searchable()
-                    ->placeholder('Untitled'),
-                TextColumn::make('alt_text')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 TextColumn::make('sort_order')
                     ->sortable(),
                 ToggleColumn::make('is_active'),
@@ -108,7 +101,7 @@ class GalleryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ManageGalleries::route('/'),
+            'index' => ManageWhyChooseUs::route('/'),
         ];
     }
 }

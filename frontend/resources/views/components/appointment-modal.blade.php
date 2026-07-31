@@ -38,10 +38,10 @@
 
             </div>
 
-            <button onclick="closeAppointmentModal()"
+            <button onclick="closeAppointmentModal()" title="Close"
                 class="flex h-10 w-10 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-600">
 
-                ✕
+                <i class="mdi mdi-close"></i>
 
             </button>
 

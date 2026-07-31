@@ -47,18 +47,21 @@
                 </a>
 
                 <p class="mt-6 sm:mt-8 text-sm sm:text-base text-primary-200 leading-7 max-w-md">
-                     {{-- {{ $data-> clinic_description}} --}}
-
-                    Providing compassionate, honest and modern dental care
-                    for individuals and families in Aizawl. We are committed
-                    to helping every patient achieve a healthy and confident smile.
-
+                     {{ $data->clinic_description}}
                 </p>
 
                 <!-- Social -->
 
                 <div class="flex gap-4 mt-6 sm:mt-8">
-                    @if ($data->facebook_url)
+                    @if ($data->youtube_url)
+                    <a href="{{ $data->youtube_url}}"
+                        class="w-12 h-12 rounded-xl bg-white/10 hover:bg-primary-600 transition flex items-center justify-center">
+
+                        <i class="mdi mdi-youtube text-xl"></i>
+
+                    </a>
+                    @endif
+                    @if ($data->youtube_url)
                     <a href="{{ $data->facebook_url}}"
                         class="w-12 h-12 rounded-xl bg-white/10 hover:bg-primary-600 transition flex items-center justify-center">
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Services\Pages;
+namespace App\Filament\Resources\WhyChooseUs\Pages;
 
-use App\Filament\Resources\Services\ServiceResource;
+use App\Filament\Resources\WhyChooseUs\WhyChooseUsResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 
-class ManageServices extends ManageRecords
+class ManageWhyChooseUs extends ManageRecords
 {
-    protected static string $resource = ServiceResource::class;
+    protected static string $resource = WhyChooseUsResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -32,173 +32,65 @@
 
         </div>
 
-        <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 mt-8 sm:mt-10 lg:mt-14">
+        @php
+            $featured = $whyChooseUs->first();
+            $items = $whyChooseUs->skip(1);
+        @endphp
 
-            <!-- Featured Card -->
-            <div
-                class="lg:col-span-2 rounded-3xl lg:rounded-4xl bg-linear-to-br from-primary-600 to-primary-700 text-white p-6 sm:p-8 lg:p-10 shadow-xl">
+        @if ($featured)
+            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 mt-8 sm:mt-10 lg:mt-14">
 
+                <!-- Featured Card -->
                 <div
-                    class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-white/20 flex items-center justify-center">
+                    class="lg:col-span-2 rounded-3xl lg:rounded-4xl bg-linear-to-br from-primary-600 to-primary-700 text-white p-6 sm:p-8 lg:p-10 shadow-xl">
 
-                    <i class="mdi mdi-heart-pulse text-3xl sm:text-4xl"></i>
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-white/20 flex items-center justify-center">
+                        <i class="mdi {{ $featured->icon ?: 'mdi-tooth-outline' }} text-3xl sm:text-4xl"></i>
+                    </div>
+
+                    <h3 class="mt-5 text-xl sm:text-2xl lg:text-3xl font-bold">
+                        {{ $featured->title }}
+                    </h3>
+
+                    <p class="mt-3 sm:mt-4 text-sm sm:text-base leading-7 text-primary-100 whitespace-pre-wrap">{{ $featured->description }}</p>
 
                 </div>
 
-                <h3 class="mt-5 text-xl sm:text-2xl lg:text-3xl font-bold">
+                <!-- Other Cards -->
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
 
-                    Patient First Care
+                    @foreach ($items as $item)
+                        <div
+                            class="h-full bg-white rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-7 shadow-sm border border-gray-100 hover:border-primary-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                </h3>
+                            <div
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-100 flex items-center justify-center">
+                                <i
+                                    class="mdi {{ $item->icon ?: 'mdi-tooth-outline' }} text-2xl sm:text-3xl text-primary-600"></i>
+                            </div>
 
-                <p class="mt-3 sm:mt-4 text-sm sm:text-base leading-7 text-primary-100">
+                            <h4 class="mt-5 text-lg sm:text-xl lg:text-2xl font-bold">
+                                {{ $item->title }}
+                            </h4>
 
-                    Every treatment begins with listening.
-                    We explain your options clearly, answer your questions,
-                    and help you make informed decisions without pressure.
+                            <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 leading-7">
+                                {{ $item->description }}
+                            </p>
 
+                        </div>
+                    @endforeach
+
+                </div>
+
+            </div>
+        @else
+            <div class="mt-8 sm:mt-10 lg:mt-14">
+                <p class="text-center text-gray-600">
+                    Our services will be listed here soon.
                 </p>
-
-                {{-- <div class="mt-6 sm:mt-8 space-y-3">
-
-                    <div class="flex items-start gap-3">
-
-                        <i class="mdi mdi-check-circle text-lg mt-0.5"></i>
-
-                        <span class="text-sm sm:text-base">Honest treatment recommendations</span>
-
-                    </div>
-
-                    <div class="flex items-start gap-3">
-
-                        <i class="mdi mdi-check-circle text-lg mt-0.5"></i>
-
-                        <span class="text-sm sm:text-base">Comfortable and gentle procedures</span>
-
-                    </div>
-
-                    <div class="flex items-start gap-3">
-
-                        <i class="mdi mdi-check-circle text-lg mt-0.5"></i>
-
-                        <span class="text-sm sm:text-base">Friendly support from consultation to recovery</span>
-
-                    </div>
-
-                </div> --}}
-
             </div>
-
-            <!-- Right Grid -->
-            <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-
-                <!-- Card -->
-                <div
-                    class="h-full bg-white rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-7 shadow-sm border border-gray-100 hover:border-primary-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-
-                    <div
-                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-100 flex items-center justify-center">
-
-                        <i class="mdi mdi-tooth-outline text-2xl sm:text-3xl text-primary-600"></i>
-
-                    </div>
-
-                    <h4 class="mt-5 text-lg sm:text-xl lg:text-2xl font-bold">
-
-                        Modern Dentistry
-
-                    </h4>
-
-                    <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 leading-7">
-
-                        We use up-to-date techniques and equipment to provide
-                        accurate diagnosis and effective treatment.
-
-                    </p>
-
-                </div>
-
-                <!-- Card -->
-                <div
-                    class="h-full bg-white rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-7 shadow-sm border border-gray-100 hover:border-primary-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-
-                    <div
-                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-100 flex items-center justify-center">
-
-                        <i class="mdi mdi-account-heart-outline text-2xl sm:text-3xl text-primary-600"></i>
-
-                    </div>
-
-                    <h4 class="mt-5 text-lg sm:text-xl lg:text-2xl font-bold">
-
-                        Personalized Care
-
-                    </h4>
-
-                    <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 leading-7">
-
-                        Every treatment plan is tailored to your oral health,
-                        lifestyle and long-term wellbeing.
-
-                    </p>
-
-                </div>
-
-                <!-- Card -->
-                <div
-                    class="h-full bg-white rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-7 shadow-sm border border-gray-100 hover:border-primary-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-
-                    <div
-                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-100 flex items-center justify-center">
-
-                        <i class="mdi mdi-shield-check text-2xl sm:text-3xl text-primary-600"></i>
-
-                    </div>
-
-                    <h4 class="mt-5 text-lg sm:text-xl lg:text-2xl font-bold">
-
-                        Safe & Hygienic
-
-                    </h4>
-
-                    <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 leading-7">
-
-                        We maintain strict sterilization and hygiene protocols
-                        to ensure a safe clinical environment.
-
-                    </p>
-
-                </div>
-
-                <!-- Card -->
-                <div
-                    class="h-full bg-white rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-7 shadow-sm border border-gray-100 hover:border-primary-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-
-                    <div
-                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-100 flex items-center justify-center">
-
-                        <i class="mdi mdi-clock-check-outline text-2xl sm:text-3xl text-primary-600"></i>
-
-                    </div>
-
-                    <h4 class="mt-5 text-lg sm:text-xl lg:text-2xl font-bold">
-
-                        Flexible Appointments
-
-                    </h4>
-
-                    <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 leading-7">
-
-                        Book appointments that fit your schedule with
-                        minimal waiting time whenever possible.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
+        @endif
 
     </div>
 

@@ -31,7 +31,7 @@ class FaqResource extends Resource
 
     protected static ?string $navigationLabel = 'FAQs';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 6;
 
     public static function form(Schema $schema): Schema
     {
@@ -45,6 +45,7 @@ class FaqResource extends Resource
                             ->maxLength(255),
                         Textarea::make('answer')
                             ->required()
+                            ->autosize()
                             ->rows(6),
                         Grid::make(2)
                             ->schema([

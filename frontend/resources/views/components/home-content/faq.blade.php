@@ -40,7 +40,7 @@
                         style="{{ $loop->first ? '' : 'max-height:0;' }}">
 
                         <p
-                            class="px-4 pb-4 pt-1 sm:pb-6 text-xs sm:text-sm lg:text-base text-gray-600 leading-6 sm:leading-8 whitespace-pre-line">
+                            class="px-4 pb-2 pt-1 sm:pb-6 text-xs sm:text-sm lg:text-base text-gray-600 leading-6 sm:leading-8 ">
                             {{ $faq->answer }}
                         </p>
 

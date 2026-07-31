@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('favicon')->nullable();
             $table->string('happy_patient')->nullable();
             $table->string('patient_rating')->nullable();
-            $table->text(' clinic_description')->nullable();
+            $table->text('clinic_description')->nullable();
 
             /*
             |--------------------------------------------------------------------------

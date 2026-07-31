@@ -27,35 +27,35 @@
             </p>
 
         </div>
-        <div class="mt-8 sm:mt-10 lg:mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5">
+        @if ($galleries->isNotEmpty())
+            <div class="mt-8 sm:mt-10 lg:mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5">
+                @foreach ($galleries as $gallery)
+                    <figure class="group relative mb-5 break-inside-avoid overflow-hidden rounded-3xl shadow">
 
-            @forelse($galleries as $gallery)
-                <figure class="group relative mb-5 break-inside-avoid overflow-hidden rounded-3xl shadow">
+                        <img src="{{ Storage::disk('public')->url($gallery->image) }}"
+                            alt="{{ $gallery->alt_text ?: $gallery->title ?: 'Eleos Dental Clinic' }}" loading="lazy"
+                            class="w-full h-auto object-cover transition duration-700 group-hover:scale-105">
 
-                    <img src="{{ Storage::disk('public')->url($gallery->image) }}"
-                        alt="{{ $gallery->alt_text ?: $gallery->title ?: 'Eleos Dental Clinic' }}" loading="lazy"
-                        class="w-full h-auto object-cover transition duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition">
+                        </div>
 
-                    <div
-                        class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition">
-                    </div>
+                        @if (filled($gallery->title))
+                            <figcaption class="absolute bottom-4 left-4 text-white font-medium">
+                                {{ $gallery->title }}
+                            </figcaption>
+                        @endif
 
-                    @if (filled($gallery->title))
-                        <figcaption class="absolute bottom-4 left-4 text-white font-medium">
-                            {{ $gallery->title }}
-                        </figcaption>
-                    @endif
-
-                </figure>
-
-            @empty
-
+                    </figure>
+                @endforeach
+            </div>
+        @else
+            <div class="mt-8 sm:mt-10 lg:mt-14">
                 <p class="text-center text-gray-600">
                     Clinic photos will be added here soon.
                 </p>
-            @endforelse
-
-        </div>
+            </div>
+        @endif
 
     </div>
 

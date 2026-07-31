@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="py-16 lg:py-24">
+<section class="py-18 lg:py-24">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

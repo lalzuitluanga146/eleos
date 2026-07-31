@@ -71,7 +71,7 @@
                             <img
                                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($testimonial->patient_photo) }}"
                                 alt="{{ $testimonial->patient_name }}"
-                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover">
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border border-primary-200">
 
                         @else
 

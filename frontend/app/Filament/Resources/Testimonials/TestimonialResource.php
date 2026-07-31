@@ -52,7 +52,8 @@ class TestimonialResource extends Resource
                                     ->image()
                                     ->disk('public')
                                     ->visibility('public')
-                                    ->directory('testimonials'),
+                                    ->directory('testimonials')
+                                    ->imageEditor(),
                             ]),
                         TextInput::make('rating')
                             ->numeric()
@@ -64,6 +65,7 @@ class TestimonialResource extends Resource
                             ->helperText('Choose a rating from 1 to 5.'),
                         Textarea::make('review')
                             ->required()
+                            ->autosize()
                             ->rows(6),
                         Grid::make(3)
                             ->schema([

@@ -62,11 +62,13 @@ class ServiceResource extends Resource
                                     ->image()
                                     ->disk('public')
                                     ->visibility('public')
-                                    ->directory('services'),
+                                    ->directory('services')
+                                    ->imageEditor(),
                             ]),
                         Textarea::make('description')
                             ->required()
                             ->rows(5)
+                            ->autosize()
                             ->columnSpanFull(),
                         Grid::make(2)
                             ->schema([

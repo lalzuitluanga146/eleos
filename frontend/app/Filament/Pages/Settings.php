@@ -97,8 +97,9 @@ class Settings extends Page implements HasForms
                                             ->maxValue(5)
                                             ->hint('Rating must be between 1 and 5.')
                                             ->required(),
-                                        Textarea::make(' clinic_description')
+                                        Textarea::make('clinic_description')
                                             ->rows(5)
+                                            ->autosize()
                                             ->columnSpanFull(),
                                     ]),
                             ]),
@@ -118,6 +119,7 @@ class Settings extends Page implements HasForms
                                             ->maxLength(255),
                                         Textarea::make('hero_description')
                                             ->rows(5)
+                                            ->autosize()
                                             ->columnSpanFull(),
                                         FileUpload::make('hero_image')
                                             ->label('Hero image')
@@ -141,7 +143,8 @@ class Settings extends Page implements HasForms
                                             ->maxLength(255),
                                         Textarea::make('about_description')
                                             ->rows(5)
-                                            ->columnSpanFull(),
+                                            ->columnSpanFull()
+                                            ->autosize(),
                                         FileUpload::make('about_image')
                                             ->label('About image')
                                             ->image()
@@ -169,6 +172,7 @@ class Settings extends Page implements HasForms
                                                             ->label('Heading'),
                                                         Textarea::make('services_description')
                                                             ->label('Introduction')
+                                                            ->autosize()
                                                             ->rows(3),
                                                     ]),
 
@@ -184,6 +188,7 @@ class Settings extends Page implements HasForms
                                                             ->label('Heading'),
                                                         Textarea::make('why_choose_description')
                                                             ->label('Introduction')
+                                                            ->autosize()
                                                             ->rows(3),
                                                     ]),
 
@@ -199,6 +204,7 @@ class Settings extends Page implements HasForms
                                                             ->label('Heading'),
                                                         Textarea::make('testimonials_description')
                                                             ->label('Introduction')
+                                                            ->autosize()
                                                             ->rows(3),
                                                     ]),
 
@@ -214,6 +220,7 @@ class Settings extends Page implements HasForms
                                                             ->label('Heading'),
                                                         Textarea::make('faq_description')
                                                             ->label('Introduction')
+                                                            ->autosize()
                                                             ->rows(3),
                                                     ]),
 
@@ -229,6 +236,7 @@ class Settings extends Page implements HasForms
                                                             ->label('Heading'),
                                                         Textarea::make('gallery_description')
                                                             ->label('Introduction')
+                                                            ->autosize()
                                                             ->rows(3),
                                                     ]),
                                             ]),
@@ -279,6 +287,7 @@ class Settings extends Page implements HasForms
                                             ->url(),
                                         Textarea::make('address')
                                             ->rows(3)
+                                            ->autosize()
                                             ->columnSpanFull(),
                                     ]),
 
@@ -311,6 +320,7 @@ class Settings extends Page implements HasForms
                                             ->maxLength(255),
                                         Textarea::make('meta_description')
                                             ->rows(5)
+                                            ->autosize()
                                             ->maxLength(200),
                                     ]),
                             ]),

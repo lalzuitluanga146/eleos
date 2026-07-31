@@ -42,17 +42,13 @@
                 <a href="#services" class="text-gray-700 hover:text-primary-600 transition">
                     Services
                 </a>
-
-                <a href="#faq" class="text-gray-700 hover:text-primary-600 transition">
-                    FAQ
+                
+                <a href="#gallery" class="text-gray-700 hover:text-primary-600 transition">
+                    Gallery
                 </a>
 
                 <a href="#contact" class="text-gray-700 hover:text-primary-600 transition">
                     Contact
-                </a>
-
-                <a href="#gallery" class="text-gray-700 hover:text-primary-600 transition">
-                    Gallery
                 </a>
 
             </nav>

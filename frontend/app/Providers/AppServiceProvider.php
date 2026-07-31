@@ -8,6 +8,7 @@ use App\Models\Homepage;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Testimonial;
+use App\Models\WhyChooseUs;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -41,6 +42,12 @@ class AppServiceProvider extends ServiceProvider
                 ->orderBy('title')
                 ->get();
 
+            $whyChooseUs = WhyChooseUs::query()
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->orderBy('title')
+                ->get();
+
             $faqs = Faq::query()
                 ->where('is_active', true)
                 ->orderBy('sort_order')
@@ -63,6 +70,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact(
                 'data',
                 'services',
+                'whyChooseUs',
                 'faqs',
                 'testimonials',
                 'galleries'

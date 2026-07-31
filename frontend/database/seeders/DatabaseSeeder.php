@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Testimonial;
 use App\Models\User;
+use App\Models\WhyChooseUs;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +16,6 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         // User::factory(10)->create();
@@ -26,6 +24,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'myth@mail.com',
             'password' => bcrypt('myth@123'),
+            'is_admin' => true,
+        ]);
+
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin@mail.com',
+            'password' => bcrypt('admin@123'),
             'is_admin' => true,
         ]);
 
@@ -68,34 +73,56 @@ class DatabaseSeeder extends Seeder
             'gallery_description' => 'We believe a welcoming and hygienic environment helps every patient feel relaxed and confident throughout their visit.',
         ]);
 
-        foreach ([
-            ['title' => 'General Checkup', 'slug' => 'general-checkup', 'icon' => 'mdi-stethoscope', 'description' => 'Routine dental examinations to maintain healthy teeth and detect problems early.'],
-            ['title' => 'Teeth Cleaning', 'slug' => 'teeth-cleaning', 'icon' => 'mdi-toothbrush', 'description' => 'Professional scaling and polishing to remove plaque and keep your smile fresh.'],
-            ['title' => 'Dental Fillings', 'slug' => 'dental-fillings', 'icon' => 'mdi-tooth-outline', 'description' => 'Restore damaged or decayed teeth with durable and natural-looking fillings.'],
-            ['title' => 'Tooth Extraction', 'slug' => 'tooth-extraction', 'icon' => 'mdi-medical-bag', 'description' => 'Safe and comfortable tooth removal with gentle aftercare guidance.'],
-            ['title' => 'Root Canal', 'slug' => 'root-canal', 'icon' => 'mdi-hospital-box-outline', 'description' => 'Pain-relieving treatment to save infected teeth and restore oral health.'],
-            ['title' => 'Crowns & Bridges', 'slug' => 'crowns-bridges', 'icon' => 'mdi-diamond-stone', 'description' => 'Restore missing or damaged teeth with strong and natural restorations.'],
-            ['title' => 'Dentures', 'slug' => 'dentures', 'icon' => 'mdi-emoticon-happy-outline', 'description' => 'Comfortable full and partial dentures designed for confidence and function.'],
-            ['title' => 'Teeth Whitening', 'slug' => 'teeth-whitening', 'icon' => 'mdi-white-balance-sunny', 'description' => 'Professional whitening treatment for a brighter and more confident smile.'],
-        ] as $sortOrder => $service) {
+        foreach (
+            [
+                ['title' => 'General Checkup', 'slug' => 'general-checkup', 'icon' => 'mdi-stethoscope', 'description' => 'Routine dental examinations to maintain healthy teeth and detect problems early.'],
+                ['title' => 'Teeth Cleaning', 'slug' => 'teeth-cleaning', 'icon' => 'mdi-toothbrush', 'description' => 'Professional scaling and polishing to remove plaque and keep your smile fresh.'],
+                ['title' => 'Dental Fillings', 'slug' => 'dental-fillings', 'icon' => 'mdi-tooth-outline', 'description' => 'Restore damaged or decayed teeth with durable and natural-looking fillings.'],
+                ['title' => 'Tooth Extraction', 'slug' => 'tooth-extraction', 'icon' => 'mdi-medical-bag', 'description' => 'Safe and comfortable tooth removal with gentle aftercare guidance.'],
+                ['title' => 'Root Canal', 'slug' => 'root-canal', 'icon' => 'mdi-hospital-box-outline', 'description' => 'Pain-relieving treatment to save infected teeth and restore oral health.'],
+                ['title' => 'Crowns & Bridges', 'slug' => 'crowns-bridges', 'icon' => 'mdi-diamond-stone', 'description' => 'Restore missing or damaged teeth with strong and natural restorations.'],
+                ['title' => 'Dentures', 'slug' => 'dentures', 'icon' => 'mdi-emoticon-happy-outline', 'description' => 'Comfortable full and partial dentures designed for confidence and function.'],
+                ['title' => 'Teeth Whitening', 'slug' => 'teeth-whitening', 'icon' => 'mdi-white-balance-sunny', 'description' => 'Professional whitening treatment for a brighter and more confident smile.'],
+            ] as $sortOrder => $service
+        ) {
             Service::create([...$service, 'sort_order' => $sortOrder]);
         }
 
-        foreach ([
-            ['question' => 'Do I need an appointment before visiting?', 'answer' => 'Appointments are recommended to reduce waiting time and ensure we can give you the attention you deserve. Walk-in patients are welcome, subject to availability.'],
-            ['question' => 'Do you provide treatment for children?', 'answer' => 'Yes. We provide gentle dental care for children and work to make every visit comfortable and stress-free.'],
-            ['question' => 'What should I bring to my first appointment?', 'answer' => 'If available, bring any previous dental records, a list of medications you take, and any relevant medical information that may help us provide appropriate care.'],
-            ['question' => 'Do you accept dental emergencies?', 'answer' => 'Yes. Please call us immediately if you are experiencing severe pain, swelling, bleeding, or a dental injury so we can arrange the earliest possible appointment.'],
-            ['question' => 'How can I book an appointment?', 'answer' => 'You can book online through our appointment form or simply call our clinic and we will help you choose a convenient time.'],
-        ] as $sortOrder => $faq) {
+        foreach (
+            [
+                ['title' => 'Patient First Care', 'icon' => 'mdi-heart-pulse', 'description' => 'Every treatment begins with listening. We explain your options clearly, answer your questions, and help you make informed decisions without pressure.
+
+     * Honest treatment recommendations
+     * Comfortable and gentle procedures
+     * Friendly support from consultation to recovery'],
+                ['title' => 'Modern Dentistry', 'icon' => 'mdi-tooth-outline', 'description' => 'We use up-to-date techniques and equipment to provide accurate diagnosis and effective treatment.'],
+                ['title' => 'Personalized Care', 'icon' => 'mdi-account-heart-outline', 'description' => 'Every treatment plan is tailored to your oral health, lifestyle and long-term wellbeing.'],
+                ['title' => 'Safe & Hygienic', 'icon' => 'mdi-shield-check', 'description' => 'We maintain strict sterilization and hygiene protocols to ensure a safe clinical environment.'],
+                ['title' => 'Flexible Appointments', 'icon' => 'mdi-clock-check-outline', 'description' => 'Book appointments that fit your schedule with minimal waiting time whenever possible.'],
+            ] as $sortOrder => $items
+        ) {
+            WhyChooseUs::create([...$items, 'sort_order' => $sortOrder]);
+        }
+
+        foreach (
+            [
+                ['question' => 'Do I need an appointment before visiting?', 'answer' => 'Appointments are recommended to reduce waiting time and ensure we can give you the attention you deserve. Walk-in patients are welcome, subject to availability.'],
+                ['question' => 'Do you provide treatment for children?', 'answer' => 'Yes. We provide gentle dental care for children and work to make every visit comfortable and stress-free.'],
+                ['question' => 'What should I bring to my first appointment?', 'answer' => 'If available, bring any previous dental records, a list of medications you take, and any relevant medical information that may help us provide appropriate care.'],
+                ['question' => 'Do you accept dental emergencies?', 'answer' => 'Yes. Please call us immediately if you are experiencing severe pain, swelling, bleeding, or a dental injury so we can arrange the earliest possible appointment.'],
+                ['question' => 'How can I book an appointment?', 'answer' => 'You can book online through our appointment form or simply call our clinic and we will help you choose a convenient time.'],
+            ] as $sortOrder => $faq
+        ) {
             Faq::create([...$faq, 'sort_order' => $sortOrder]);
         }
 
-        foreach ([
-            ['patient_name' => 'R. Lalrinawmi', 'rating' => 5, 'review' => 'The doctor explained every step clearly and made me feel comfortable throughout my treatment. The clinic is clean, modern and welcoming.'],
-            ['patient_name' => 'T. Chhangte', 'rating' => 5, 'review' => 'My children were nervous before their visit, but the staff made them feel relaxed and safe. We truly appreciate the kindness and patience shown during the appointment.'],
-            ['patient_name' => 'L. Malsawmi', 'rating' => 4, 'review' => 'Booking an appointment was easy and the treatment was gentle. I would definitely recommend Eleos Dental Clinic to my friends and family.'],
-        ] as $sortOrder => $testimonial) {
+        foreach (
+            [
+                ['patient_name' => 'R. Lalrinawmi', 'rating' => 5, 'review' => 'The doctor explained every step clearly and made me feel comfortable throughout my treatment. The clinic is clean, modern and welcoming.'],
+                ['patient_name' => 'T. Chhangte', 'rating' => 5, 'review' => 'My children were nervous before their visit, but the staff made them feel relaxed and safe. We truly appreciate the kindness and patience shown during the appointment.'],
+                ['patient_name' => 'L. Malsawmi', 'rating' => 4, 'review' => 'Booking an appointment was easy and the treatment was gentle. I would definitely recommend Eleos Dental Clinic to my friends and family.'],
+            ] as $sortOrder => $testimonial
+        ) {
             Testimonial::create([...$testimonial, 'sort_order' => $sortOrder]);
         }
 
@@ -106,8 +133,8 @@ class DatabaseSeeder extends Seeder
             // 'logo' => 'logo.png',
             // 'favicon' => 'favicon.ico',
             'happy_patient' => 500,
-            'patient_rating' => 4.9,
-            ' clinic_description' => 'Providing compassionate, honest and modern dental care for individuals and families in Aizawl. We are committed to helping every patient achieve a healthy and confident smile.',
+            'patient_rating' => 5,
+            'clinic_description' => 'Providing compassionate, honest and modern dental care for individuals and families in Aizawl. We are committed to helping every patient achieve a healthy and confident smile.',
 
 
             // Doctor
@@ -134,7 +161,7 @@ class DatabaseSeeder extends Seeder
 
             // Social
             'facebook_url' => 'https://facebook.com/eleos',
-            'instagram_url' => 'https://instagram.com/eleos',
+            'instagram_url' => 'https://www.instagram.com/eleosdentalclinic?igsh=Z2oxbmJ6Yjd1djNw',
             'youtube_url' => 'https://youtube.com/@eleos',
             'linkedin_url' => 'https://linkedin.com/company/eleos',
 

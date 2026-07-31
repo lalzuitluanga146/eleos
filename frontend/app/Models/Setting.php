@@ -14,7 +14,7 @@ class Setting extends Model
         'favicon',
         'happy_patient',
         'patient_rating',
-        ' clinic_description',
+        'clinic_description',
 
         // Doctor
         'doctor_name',
